@@ -2,7 +2,7 @@
 # ============================================================
 # Gradient collection (bf16 rollout): no optimizer step.
 # Samples 20 batches of 32 prompts each, dumps per-batch grads to
-#   /lanzichang1/new_verl/grads/bf16/batch_XXXX/rank_YYYY.pt
+#   /lanzichang1/new_verl/grads/dapo_17k/bf16/batch_XXXX/rank_YYYY.pt
 # ============================================================
 ray stop --force || true
 pkill -9 ray || true
@@ -15,7 +15,7 @@ pkill -9 python || true
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 EXP_NAME="grad_collect-bf16-${TIMESTAMP}"
 OUTPUT_DIR="/lanzichang1/new_verl/checkpoints/$EXP_NAME"
-GRAD_DIR="/lanzichang1/new_verl/grads/bf16"
+GRAD_DIR="/lanzichang1/new_verl/grads/dapo_17k/bf16"
 mkdir -p $OUTPUT_DIR
 mkdir -p $GRAD_DIR
 
@@ -75,7 +75,7 @@ gen_tp=2
 tp_size=2
 
 # Grad collection knobs
-NUM_GRAD_BATCHES=200
+NUM_GRAD_BATCHES=20
 BATCH_SIZE=32
 
 PYTHONUNBUFFERED=1 python3 /lanzichang1/new_verl/scripts/grad_exp/grad_collect.py \

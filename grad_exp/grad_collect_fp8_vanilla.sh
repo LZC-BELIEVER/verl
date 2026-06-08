@@ -15,7 +15,7 @@ pkill -9 python || true
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 EXP_NAME="grad_collect-fp8_vanilla-${TIMESTAMP}"
 OUTPUT_DIR="/lanzichang1/new_verl/checkpoints/$EXP_NAME"
-GRAD_DIR="/lanzichang1/new_verl/grads/fp8_vanilla"
+GRAD_DIR="/lanzichang1/new_verl/grads/dapo_17k/fp8_vanilla"
 mkdir -p $OUTPUT_DIR
 mkdir -p $GRAD_DIR
 
@@ -74,7 +74,7 @@ gen_tp=2
 tp_size=2
 
 # Grad collection knobs
-NUM_GRAD_BATCHES=200
+NUM_GRAD_BATCHES=20
 BATCH_SIZE=32
 
 PYTHONUNBUFFERED=1 python3 /lanzichang1/new_verl/scripts/grad_exp/grad_collect.py \

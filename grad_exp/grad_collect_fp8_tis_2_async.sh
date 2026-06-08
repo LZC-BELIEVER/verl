@@ -13,9 +13,9 @@ pkill -9 python || true
 
 
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-EXP_NAME="grad_collect-fp8_tis-${TIMESTAMP}"
+EXP_NAME="grad_collect-fp8_tis-2-async-${TIMESTAMP}"
 OUTPUT_DIR="/lanzichang1/new_verl/checkpoints/$EXP_NAME"
-GRAD_DIR="/lanzichang1/new_verl/grads/dapo_17k/fp8_tis"
+GRAD_DIR="/lanzichang1/new_verl/grads/dapo_17k/2_async_fp8_tis"
 mkdir -p $OUTPUT_DIR
 mkdir -p $GRAD_DIR
 
@@ -76,6 +76,7 @@ tp_size=2
 # Grad collection knobs
 NUM_GRAD_BATCHES=20
 BATCH_SIZE=32
+ASYNC_BSZ=16
 
 PYTHONUNBUFFERED=1 python3 /lanzichang1/new_verl/scripts/grad_exp/grad_collect.py \
     --config-path=/lanzichang1/new_verl/verl/recipe/dapo/config \
@@ -110,7 +111,7 @@ PYTHONUNBUFFERED=1 python3 /lanzichang1/new_verl/scripts/grad_exp/grad_collect.p
     actor_rollout_ref.actor.clip_ratio_c=10.0 \
     actor_rollout_ref.actor.loss_agg_mode=${loss_agg_mode} \
     actor_rollout_ref.actor.optim.lr=1e-6 \
-    actor_rollout_ref.actor.ppo_mini_batch_size=${BATCH_SIZE} \
+    actor_rollout_ref.actor.ppo_mini_batch_size=${ASYNC_BSZ} \
     actor_rollout_ref.actor.use_dynamic_bsz=${use_dynamic_bsz} \
     actor_rollout_ref.actor.ppo_max_token_len_per_gpu=$(( 40 * 1024 )) \
     actor_rollout_ref.actor.megatron.tensor_model_parallel_size=${tp_size} \
