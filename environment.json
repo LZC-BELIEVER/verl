@@ -1,0 +1,33 @@
+{
+  "python": "3.12.10 (main, May 30 2025, 05:37:37) [Clang 20.1.4 ]",
+  "libc": [
+    "glibc",
+    "2.39"
+  ],
+  "packages": {
+    "torch": "2.13.0+cu130",
+    "vllm": "0.29.0",
+    "transformers": "5.12.1",
+    "nvidia-modelopt": "0.44.0",
+    "compressed-tensors": "0.17.0",
+    "megatron-core": "0.19.2+4b4acac9a",
+    "megatron-bridge": "0.6.2",
+    "transformer-engine": "2.16.1",
+    "flash-attn": "2.8.3",
+    "flash-linear-attention": "0.5.2",
+    "ray": "2.55.1",
+    "numpy": "2.4.6"
+  },
+  "torch_cuda": "13.0",
+  "device": "NVIDIA H100 80GB HBM3",
+  "driver": "580.95.05",
+  "upstream_sha": "f2923cbf154731918b1e36db8c567433f349fede",
+  "cuda_compiler": "13.0.88",
+  "model": "Qwen/Qwen3-0.6B",
+  "model_files": {
+    "config.json": "660db3b73d788119c04535e48cf9be5f55bc3100841a718637ae695b442f27dd",
+    "model.safetensors": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+  },
+  "runtime_setup": "Isolated Python executable linked to Ubuntu 24.04 glibc 2.39 and C++ runtime; host runtime unchanged. Dedicated CUDA 13.0 compiler/header tree. Python dependencies use upstream uv.lock, with verified local wheels."
+}
